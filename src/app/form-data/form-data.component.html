@@ -1,0 +1,92 @@
+<div class="container-fluid formData-container">
+    <div class="row mx-auto my-3">
+        <div class="card bg-white border-1">
+            <div class="card-body">
+                <form [formGroup]="chartDataForm">
+                    <div class="row mx-auto">
+                        <div class="col-6">
+                            <div class="row mx-auto">
+                                <span class="hd">
+                                    Select Monthly Revenue
+                                </span>
+                            </div>
+                            <div class="row mx-auto" formGroupName="monthlyRevenue">
+                                <div class="form-group py-3">
+                                    <label>January</label>
+                                    <input type="text" formControlName="jan" class="form-control"/>
+                                </div>
+                                <div class="form-group  py-3">
+                                    <label>February</label>
+                                    <input type="text" formControlName="feb" class="form-control" />
+                                </div>
+                                <div class="form-group py-3">
+                                    <label>March</label>
+                                    <input type="text" formControlName="mar" class="form-control" />
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="row mx-auto">
+                                <span class="hd">
+                                    Select Colors
+                                </span>
+                            </div>
+                            <div class="row mx-auto" formGroupName="colors">
+                                <div class="form-group py-3">
+                                    <label>Color</label>
+                                    <select class="form-control" formControlName="janColor" (change)="changeChart($event)">
+                                        <option *ngFor="let cl of clrs" [ngValue]="cl">{{cl}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group  py-3">
+                                    <label>Color</label>
+                                    <select class="form-control" formControlName="febColor" (change)="changeChart($event)">
+                                        <option *ngFor="let cl of clrs" [ngValue]="cl">{{cl}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group py-3">
+                                    <label>Color</label>
+                                    <select class="form-control" formControlName="marColor" (change)="changeChart($event)">
+                                        <option *ngFor="let cl of clrs" [ngValue]="cl">{{cl}}</option>
+                                    </select>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="row mx-auto" formGroupName="type">
+                        <div class="form-group">
+                            <label for="gender" class="hd">Graph Type</label>
+                            <div class="my-1">
+                                <input id="bar" type="radio" value="bar" name="chartType"
+                                    formControlName="chartType" (change)="changeChart($event)">
+                                <label for="bar" class="px-2">Bar</label>
+                            </div>
+
+                            <div class="my-1">
+                                <input id="pie" type="radio" value="pie" name="chartType"
+                                    formControlName="chartType" (change)="changeChart($event)">
+                                <label for="pie" class="px-2">Pie</label>
+                            </div>
+
+                            <div class="my-1">
+                                <input id="line" type="radio" value="line" name="chartType"
+                                    formControlName="chartType" (change)="changeChart($event)">
+                                <label for="line" class="px-2">Line</label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mx-auto" *ngIf="flag">
+        <app-chart></app-chart>
+    </div>
+</div>

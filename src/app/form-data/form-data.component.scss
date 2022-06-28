@@ -1,0 +1,11 @@
+@mixin fonts($size, $weight, $color) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+
+.formData-container {
+    .hd {
+        @include fonts(1em, 600, #000);
+    }
+}
